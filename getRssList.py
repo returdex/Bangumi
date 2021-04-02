@@ -1,6 +1,13 @@
 import feedparser
 import time
 import xlwt
+import os
+
+path = os.path.abspath(os.path.dirname(__file__))
+path = path + '\\rssLink'
+folder = os.path.exists(path)
+if not folder:
+    os.makedirs(path)
 
 fileTime = time.strftime("%Y_%m_%d",time.localtime(time.time()))
 fileAddress = 'rssLink\\' + fileTime + "rss.txt"
