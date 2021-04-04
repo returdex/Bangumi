@@ -9,7 +9,7 @@ class rss:
     def __init__(self, entry):
         
         if entry.title[0] == "[":
-            temp = re.findall(r'[[](.*?)[]]', entry.title)
+            temp = re.findall(r'[\[](.*?)[\]]', entry.title)
         else:
             temp = re.findall(r'[【](.*?)[】]', entry.title)
         
