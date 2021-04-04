@@ -2,6 +2,7 @@ import feedparser
 import time
 import xlwt
 import os
+import analysis
 
 path = os.path.abspath(os.path.dirname(__file__))
 path = path + '\\rssLink'
@@ -16,10 +17,13 @@ rssFile = open(fileAddress, 'w', encoding='utf-8')
 rssSubscribe = feedparser.parse('https://bangumi.moe/rss/latest')
 
 for entry in rssSubscribe['entries']:
+    b = analysis.rss(entry)
+    b.print()
+    '''
     title = entry.title.replace('/', '_')
     rssFile.write(title)
     rssFile.write('\t')
     rssFile.write(entry.enclosures[0].href)
     rssFile.write('\n')
-
+'''
 rssFile.close()
