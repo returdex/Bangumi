@@ -36,6 +36,12 @@ proxy_list = [
     '114.239.145.165:9999'
 ]
 
+path = os.path.abspath(os.path.dirname(__file__))
+path = path + '\\torrent'
+folder = os.path.exists(path)
+if not folder:
+    os.makedirs(path)
+
 timeStr = time.strftime("%Y_%m_%d",time.localtime(time.time())) #新建存放torrent文件夹
 folderPath = os.getcwd() + '\\torrent\\' + timeStr
 folder = os.path.exists(folderPath)
