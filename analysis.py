@@ -1,5 +1,6 @@
 import re
 import os
+import json
 
 class rss:
     name = '' #番名
@@ -20,6 +21,7 @@ class rss:
         
         temp1 = '[' + self.group + ']'
         self.name = entry.title.lstrip(temp1)
+        self.name = self.name.replace('/', '_')
         self.link = entry.enclosures[0].href
         strIndex = self.link.find('magnet')
         if strIndex >= 0:
@@ -32,3 +34,17 @@ class rss:
         print(self.name)
         print(self.link)
         print(self.__linkType)
+    
+    def saveToJson(self):
+        textStr = '{'
+        textStr += '"name"' + ':'
+        textStr += '"' + self.name + '"'
+        textStr += ',' + '\n'
+        textStr += '"group"' + ':'
+        textStr += '"' + self.group + '"'
+        textStr += ',' + '\n'
+        textStr += '"link"' + ':'
+        textStr += '"' + self.link + '"' + '\n'
+        textStr += '}'
+        #textJson = json.dumps(textStr, ensure_ascii=False)
+        return textStr
