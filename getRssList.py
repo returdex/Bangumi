@@ -1,8 +1,9 @@
 import feedparser
 import time
 import os
-import analysis
 import json
+import lib.analysis
+
 
 path = os.path.abspath(os.path.dirname(__file__))
 path = path + '\\rssLink'
@@ -19,7 +20,7 @@ rssFile.write('[' + '\n')
 
 i=1
 for entry in rssSubscribe['entries']:
-    value = analysis.rss(entry)
+    value = lib.analysis.rss(entry)
     valueJson = value.saveToJson()
     #print(json.dumps(valueJson, ensure_ascii=False))
     #print(valueJson)
